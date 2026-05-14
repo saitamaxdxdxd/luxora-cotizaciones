@@ -1,0 +1,235 @@
+/** @import must precede all other statements */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * LUXORA - Dark luxury theme
+   * All HSL values for Tailwind CSS compatibility
+   */
+  :root {
+    /* Dark luxury background - slate 950 */
+    --background: 222 47% 4%;
+    --foreground: 210 40% 95%;
+
+    /* Card surface - slate 900 */
+    --card: 222 47% 7%;
+    --card-foreground: 210 40% 95%;
+
+    /* Popover / dropdown */
+    --popover: 222 47% 6%;
+    --popover-foreground: 210 40% 95%;
+
+    /* Primary: Gold/Amber */
+    --primary: 38 92% 50%;
+    --primary-foreground: 222 47% 4%;
+
+    /* Secondary: Slate 800 */
+    --secondary: 217 33% 13%;
+    --secondary-foreground: 210 40% 90%;
+
+    /* Muted */
+    --muted: 217 25% 12%;
+    --muted-foreground: 215 20% 55%;
+
+    /* Accent: Gold subtle */
+    --accent: 38 70% 18%;
+    --accent-foreground: 38 92% 65%;
+
+    /* Destructive */
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Border: subtle slate */
+    --border: 217 25% 14%;
+    --input: 217 25% 10%;
+    --ring: 38 92% 50%;
+
+    --radius: 0.75rem;
+
+    /* Gold accent for custom use */
+    --gold: 38 92% 50%;
+    --gold-light: 45 93% 68%;
+    --gold-dark: 32 80% 38%;
+
+    /* Surface levels */
+    --surface-1: 222 47% 7%;
+    --surface-2: 217 33% 10%;
+    --surface-3: 217 25% 14%;
+
+    /* Sidebar */
+    --sidebar-background: 222 47% 5%;
+    --sidebar-foreground: 210 40% 90%;
+    --sidebar-primary: 38 92% 50%;
+    --sidebar-primary-foreground: 222 47% 4%;
+    --sidebar-accent: 217 33% 12%;
+    --sidebar-accent-foreground: 210 40% 90%;
+    --sidebar-border: 217 25% 14%;
+    --sidebar-ring: 38 92% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', 'Montserrat', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    font-weight: 600;
+  }
+
+  :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  pre, code {
+    overflow-x: auto;
+    white-space: pre;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--surface-1));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--surface-3));
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--gold));
+  }
+
+  /* Input autofill override for dark theme */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    -webkit-text-fill-color: hsl(var(--foreground));
+    -webkit-box-shadow: 0 0 0 1000px hsl(var(--input)) inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}
+
+@layer utilities {
+  /* Gold text gradient */
+  .text-gold-gradient {
+    background: linear-gradient(135deg, hsl(var(--gold-light)), hsl(var(--gold)), hsl(var(--gold-dark)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Subtle gold border glow */
+  .glow-gold {
+    box-shadow: 0 0 20px hsla(38, 92%, 50%, 0.15), 0 0 40px hsla(38, 92%, 50%, 0.05);
+  }
+
+  /* Glass card effect */
+  .glass-card {
+    background: hsla(222, 47%, 7%, 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsla(38, 92%, 50%, 0.12);
+  }
+
+  /* Premium input focus ring */
+  .input-gold:focus {
+    outline: none;
+    border-color: hsl(var(--gold));
+    box-shadow: 0 0 0 2px hsla(38, 92%, 50%, 0.15);
+  }
+
+  /* Separator with gold gradient */
+  .divider-gold {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--gold)), transparent);
+    opacity: 0.3;
+  }
+}
+
+/* ─── Google Places Autocomplete dropdown — tema oscuro dorado ─────────────── */
+
+/* El contenedor principal del dropdown de sugerencias */
+.pac-container {
+  background-color: hsl(222, 47%, 6%) !important;
+  border: 1px solid hsla(38, 92%, 50%, 0.25) !important;
+  border-radius: 0.875rem !important;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.65), 0 0 0 1px hsla(38,92%,50%,0.08) !important;
+  font-family: 'Inter', 'Montserrat', sans-serif !important;
+  margin-top: 6px !important;
+  overflow: hidden !important;
+  z-index: 99999 !important;  /* Garantiza que esté por encima de todo */
+  padding: 4px !important;
+}
+
+/* Cada sugerencia */
+.pac-item {
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0.5rem !important;
+  color: hsl(210, 40%, 82%) !important;
+  padding: 10px 12px !important;
+  cursor: pointer !important;
+  transition: background-color 0.15s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.pac-item:hover {
+  background-color: hsla(38, 92%, 50%, 0.1) !important;
+  color: hsl(210, 40%, 95%) !important;
+}
+
+.pac-item-selected {
+  background-color: hsla(38, 92%, 50%, 0.14) !important;
+}
+
+/* Texto principal de la sugerencia */
+.pac-item-query {
+  color: hsl(210, 40%, 93%) !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+}
+
+/* Texto secundario (ciudad, estado) */
+.pac-item span:not(.pac-item-query):not(.pac-matched) {
+  color: hsl(215, 20%, 50%) !important;
+  font-size: 0.75rem !important;
+}
+
+/* Texto que coincide con lo escrito */
+.pac-matched {
+  color: hsl(38, 92%, 58%) !important;
+  font-weight: 600 !important;
+}
+
+/* Ocultar icono de pin de Google */
+.pac-icon {
+  display: none !important;
+}
+
+/* Ocultar logo de Google en el footer del dropdown */
+.pac-logo::after {
+  display: none !important;
+}
+
+.pac-container::after {
+  display: none !important;
+}
